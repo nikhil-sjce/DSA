@@ -31,3 +31,26 @@ class Solution
         return temp;
     }
 };
+
+// Optimized Method
+
+
+class Solution
+{
+    public:
+    //Function to return the lowest common ancestor in a Binary Tree.
+    Node* lca(Node* root ,int n1 ,int n2 ){
+        if(root == 0)
+            return NULL;
+        if(root->data == n1 || root->data == n2)
+            return root;
+        Node *leftTree = lca(root->left, n1, n2);
+        Node *rightTree = lca(root->right, n1, n2);
+        if(leftTree ==0)
+            return rightTree;
+        else if(rightTree == 0)
+            return leftTree;
+        else
+            return root;
+    }
+};
